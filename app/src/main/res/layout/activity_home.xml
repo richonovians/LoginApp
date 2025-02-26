@@ -8,7 +8,7 @@
     android:gravity="center"
     android:padding="24dp"
     android:background="@drawable/gradient_background"
-    tools:context=".MainActivity">
+    tools:context=".HomeActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="#2E7D32"
-            android:text="Hallo, User! 👋\nSelamat datang di Aplikasi Sederhana!"
+            android:text="Hallo, User! Selamat datang di Aplikasi Sederhana!"
             android:gravity="center"
             android:padding="16dp"/>
     </androidx.cardview.widget.CardView>
