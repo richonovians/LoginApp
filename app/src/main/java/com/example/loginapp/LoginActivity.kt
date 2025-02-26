@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
 
             if (email == "richo@gmail.com" && password == "123") {
                 Log.d("LoginActivity", "Login berhasil dengan email: $email")
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("USER_EMAIL", email)
                 startActivity(intent)
                 finish()
