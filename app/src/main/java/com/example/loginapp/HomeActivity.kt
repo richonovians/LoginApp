@@ -1,20 +1,35 @@
 package com.example.loginapp
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.animation.AlphaAnimation
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
-class HomeActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_home)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val email = intent.getStringExtra("USER_EMAIL") ?: "User"
+        val username = email.substringBefore("@") // Ambil bagian sebelum '@'
+
+        val welcomeText = findViewById<TextView>(R.id.welcomeText)
+        welcomeText.text = "Hallo, $username! Selamat datang di Aplikasi Sederhana."
+
+        // Animasi fade in
+        val fadeIn = AlphaAnimation(0.0f, 1.0f)
+        fadeIn.duration = 1000
+        welcomeText.startAnimation(fadeIn)
+
+        // Tombol Logout
+        val logoutButton = findViewById<Button>(R.id.logoutButton)
+        logoutButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Hapus back stack
+            startActivity(intent)
+            finish()
         }
     }
 }
