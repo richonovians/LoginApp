@@ -18,12 +18,6 @@ class HomeActivity : AppCompatActivity() {
         val welcomeText = findViewById<TextView>(R.id.welcomeText)
         welcomeText.text = "Hallo, $username! Selamat datang di Aplikasi Sederhana."
 
-        // Animasi fade in
-        val fadeIn = AlphaAnimation(0.0f, 1.0f)
-        fadeIn.duration = 1000
-        welcomeText.startAnimation(fadeIn)
-
-        // Tombol Logout
         val logoutButton = findViewById<Button>(R.id.logoutButton)
         logoutButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
